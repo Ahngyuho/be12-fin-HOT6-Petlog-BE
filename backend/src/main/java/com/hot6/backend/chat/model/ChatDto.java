@@ -20,19 +20,21 @@ import java.util.stream.Collectors;
 
 public class ChatDto {
     @Getter
+    @Builder
+//    @AllArgsConstructor
     @Schema(description = "채팅방 생성 요청 DTO")
     public static class CreateChatRoomRequest {
         @Schema(description = "채팅방 제목", example = "햄스터 친구 구해요")
-        private String title;
+        private final String title;
 
         @Schema(description = "채팅방 해시태그 목록", example = "[\"#햄스터\", \"#김포\", \"#친구\"]")
-        private List<String> hashtags;
+        private final List<String> hashtags;
 
         @Schema(description = "채팅방 시작 시간", example = "2025-05-13T13:21:00")
-        private String startDateTime;
+        private final String startDateTime;
 
         @Schema(description = "채팅방 최대 참여 인원", example = "50")
-        private Integer maxParticipants; // 최대 인원 추가
+        private final Integer maxParticipants; // 최대 인원 추가
     }
 
     @Getter

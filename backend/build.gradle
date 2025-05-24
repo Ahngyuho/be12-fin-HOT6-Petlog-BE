@@ -71,6 +71,8 @@ dependencies {
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3:3.3.0'
 
     implementation 'io.micrometer:micrometer-registry-prometheus'
+
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
