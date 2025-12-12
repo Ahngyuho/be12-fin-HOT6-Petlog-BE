@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-@Component
+//@Component
 public class ChatRoomTitleProvider {
 
     private final List<String> titles;

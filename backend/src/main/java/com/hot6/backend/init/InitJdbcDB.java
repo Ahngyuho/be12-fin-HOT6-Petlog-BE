@@ -19,7 +19,7 @@ import java.util.*;
 
 @Profile("local")
 @RequiredArgsConstructor
-@Component
+//@Component
 @Slf4j
 public class InitJdbcDB {
 

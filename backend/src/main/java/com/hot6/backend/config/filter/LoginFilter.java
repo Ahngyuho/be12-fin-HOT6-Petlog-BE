@@ -3,7 +3,7 @@ package com.hot6.backend.config.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hot6.backend.common.BaseResponse;
 import com.hot6.backend.common.BaseResponseStatus;
-import com.hot6.backend.redis.RefreshTokenRepository;
+//import com.hot6.backend.redis.RefreshTokenRepository;
 import com.hot6.backend.user.model.User;
 import com.hot6.backend.user.model.UserDto;
 import com.hot6.backend.utils.JwtUtil;
@@ -30,7 +30,7 @@ import java.util.Map;
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final AuthenticationFailureHandler failureHandler;
-    private final RefreshTokenRepository refreshTokenRepository;
+//    private final RefreshTokenRepository refreshTokenRepository;
 
     private final long REFRESH_EXP = Duration.ofDays(7).toMillis(); // 7일
 
@@ -69,7 +69,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String jwtToken = JwtUtil.generateToken(user);
         String refreshToken = JwtUtil.generateRefreshToken(user, REFRESH_EXP);
 
-        refreshTokenRepository.save(user.getEmail(), refreshToken, REFRESH_EXP);
+//        refreshTokenRepository.save(user.getEmail(), refreshToken, REFRESH_EXP);
 
         ResponseCookie cookie = ResponseCookie
                 .from("ATOKEN", jwtToken)

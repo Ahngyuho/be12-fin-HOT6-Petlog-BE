@@ -37,7 +37,7 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
     private final Hashtag_QuestionService hashtagService;
     private final QuestionImageService questionImageService;
-    private final AiAnswerService aiAnswerService;
+//    private final AiAnswerService aiAnswerService;
     private final PetRepository petRepository;
     private final AnswerRepository answerRepository;
 
@@ -65,8 +65,8 @@ public class QuestionService {
                 questionImageService.saveImages(images, question);
             }
 
-            String aiContent = aiAnswerService.generateAnswer(question.getQTitle(), question.getContent());
-            answerService.createAiAnswerForQuestion(question, aiContent);
+//            String aiContent = aiAnswerService.generateAnswer(question.getQTitle(), question.getContent());
+//            answerService.createAiAnswerForQuestion(question, aiContent);
 
         } catch (BaseException be) {
             throw be;

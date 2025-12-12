@@ -3,7 +3,6 @@ package com.hot6.backend.chat;
 import com.hot6.backend.chat.model.ChatDto;
 import com.hot6.backend.chat.producer.ChatKafkaProducer;
 import com.hot6.backend.chat.service.ChatRoomService;
-import com.hot6.backend.mongo.room.MongoChatRoomService;
 import com.hot6.backend.user.model.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +22,7 @@ import java.time.LocalDateTime;
 public class ChatWebSocketController {
     private final SimpMessagingTemplate simp;
     private final ChatRoomService chatRoomService;
-    private final MongoChatRoomService mongoChatRoomService;
+//    private final MongoChatRoomService mongoChatRoomService;
     private final ChatKafkaProducer kafkaProducer;
 
     @MessageMapping("/chat/{roomIdx}")

@@ -17,15 +17,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+                                        @Component
 public class CustomAuthFailureHandler implements AuthenticationFailureHandler {
 
-    @Value("${frontend-server}")
-    private String frontendServer;
+        @Value("${frontend-server}")
+        private String frontendServer;
 
-    @Override
-    public void onAuthenticationFailure(HttpServletRequest request,
-                                        HttpServletResponse response,
+        @Override
+        public void onAuthenticationFailure(HttpServletRequest request,
+                HttpServletResponse response,
                                         AuthenticationException exception) throws IOException {
 
         Throwable cause = exception.getCause();

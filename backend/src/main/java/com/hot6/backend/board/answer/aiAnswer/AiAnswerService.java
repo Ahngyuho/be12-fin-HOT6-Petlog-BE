@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import java.util.List;
 import java.util.Map;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 public class AiAnswerService {
 

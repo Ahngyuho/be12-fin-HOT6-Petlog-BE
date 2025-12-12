@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Component
+//@Component
 public class OAuth2FailureHandler implements AuthenticationFailureHandler {
 
     @Value("${frontend-server}")

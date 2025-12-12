@@ -3,7 +3,7 @@ package com.hot6.backend.user;
 import com.hot6.backend.common.BaseResponseStatus;
 import com.hot6.backend.common.exception.BaseException;
 import com.hot6.backend.pet.model.PetDto;
-import com.hot6.backend.redis.RefreshTokenRepository;
+//import com.hot6.backend.redis.RefreshTokenRepository;
 import com.hot6.backend.user.model.EmailVerify;
 import com.hot6.backend.user.model.User;
 import com.hot6.backend.user.model.UserDto;
@@ -44,7 +44,7 @@ public class UserService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
     private final EmailVerifyRepository emailVerifyRepository;
-    private final RefreshTokenRepository refreshTokenRepository;
+//    private final RefreshTokenRepository refreshTokenRepository;
 
     @Value("${profile-image}")
     private String defaultProfileImageUrl;
@@ -304,8 +304,8 @@ public class UserService implements UserDetailsService {
         return userRepository.findByIsDeletedTrue();  // 'is_deleted'가 true인 사용자 목록 반환
     }
 
-    @Value("${kakao-admin-key}")
-    private String adminKey;
+//    @Value("${kakao-admin-key}")
+//    private String adminKey;
 
     public Boolean checkOAuthUser(User user) {
         User checkUser = userRepository.findById(user.getIdx()).orElseThrow(
@@ -317,27 +317,27 @@ public class UserService implements UserDetailsService {
 
     public void refreshAccessToken(User user, HttpServletResponse response) {
         String email = user.getEmail();
-        String savedRefreshToken = refreshTokenRepository.findById(email);
+//        String savedRefreshToken = refreshTokenRepository.findById(email);
 
-        if (savedRefreshToken == null) {
-            throw new RuntimeException("리프레시 토큰이 없습니다.");
-        }
-
-        if (!JwtUtil.validate(savedRefreshToken)) {
-            throw new RuntimeException("리프레시 토큰이 만료되었거나 잘못되었습니다.");
-        }
-
-        User refreshUser = JwtUtil.getUser(savedRefreshToken);
-        if (refreshUser == null || !refreshUser.getEmail().equals(email)) {
-            throw new RuntimeException("리프레시 토큰 정보가 일치하지 않습니다.");
-        }
+//        if (savedRefreshToken == null) {
+//            throw new RuntimeException("리프레시 토큰이 없습니다.");
+//        }
+//
+//        if (!JwtUtil.validate(savedRefreshToken)) {
+//            throw new RuntimeException("리프레시 토큰이 만료되었거나 잘못되었습니다.");
+//        }
+//
+//        User refreshUser = JwtUtil.getUser(savedRefreshToken);
+//        if (refreshUser == null || !refreshUser.getEmail().equals(email)) {
+//            throw new RuntimeException("리프레시 토큰 정보가 일치하지 않습니다.");
+//        }
 
         String newAccessToken = JwtUtil.generateToken(user);
 
         long refreshTokenExp = Duration.ofDays(7).toMillis();
         String newRefreshToken = JwtUtil.generateRefreshToken(user, refreshTokenExp);
 
-        refreshTokenRepository.save(email, newRefreshToken, refreshTokenExp);
+//        refreshTokenRepository.save(email, newRefreshToken, refreshTokenExp);
 
         ResponseCookie accessCookie = ResponseCookie.from("ATOKEN", newAccessToken)
                 .path("/")
