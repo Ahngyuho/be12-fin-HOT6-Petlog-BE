@@ -103,10 +103,8 @@ public class ChatRoomService {
 
     @Transactional(readOnly = true)
     public Slice<ChatDto.ChatElement> getChatMessages(Long chatRoomIdx, Long userIdx, Long lastMessageId,int size) {
-//        MongoChatRoomDocument chatRoom = mongoChatRoomRepository.findByIdx(chatRoomIdx).orElseThrow(() -> new BaseException(BaseResponseStatus.CHAT_ROOM_NOT_FOUND));
         ChatRoomParticipant chatRoomParticipant = chatRoomParticipantService.findChatRoomParticipantOrThrow(chatRoomIdx, userIdx);
         return chatMessageService.findChatMessages(chatRoomParticipant,lastMessageId,size);
-//        return mongoChatRoomService.findChatMessages(chatRoom,userIdx,lastMessageId,size);
     }
 
     @Transactional(readOnly = true)

@@ -22,14 +22,14 @@ public class PostController {
 
     private final PostService postService;
 
-    @PostMapping(value = "/create", consumes = {"multipart/form-data"})
-    public ResponseEntity<BaseResponse<Void>> create(
-            @AuthenticationPrincipal User user,
-            @RequestPart("post") @Valid PostDto.PostRequest dto,
-            @RequestPart(value = "images", required = false) List<MultipartFile> images) throws IOException {
-        postService.create(user,dto, images);
-        return ResponseEntity.ok(new BaseResponse<>(BaseResponseStatus.SUCCESS));
-    }
+//    @PostMapping(value = "/create", consumes = {"multipart/form-data"})
+//    public ResponseEntity<BaseResponse<Void>> create(
+//            @AuthenticationPrincipal User user,
+//            @RequestPart("post") @Valid PostDto.PostRequest dto,
+//            @RequestPart(value = "images", required = false) List<MultipartFile> images) throws IOException {
+//        postService.create(user,dto, images);
+//        return ResponseEntity.ok(new BaseResponse<>(BaseResponseStatus.SUCCESS));
+//    }
 
     @GetMapping("/list/{boardName}")
     public ResponseEntity<BaseResponse<PostListResponse>> list(
@@ -73,14 +73,14 @@ public class PostController {
         return ResponseEntity.ok(new BaseResponse<>(BaseResponseStatus.SUCCESS));
     }
 
-    @PutMapping(value = "/update/{idx}", consumes = {"multipart/form-data"})
-    public ResponseEntity<BaseResponse<Void>> update(
-            @PathVariable Long idx,
-            @RequestPart("post") PostDto.PostRequest dto,
-            @RequestPart(value = "images", required = false) List<MultipartFile> images) throws IOException {
-        postService.update(idx, dto, images);
-        return ResponseEntity.ok(new BaseResponse<>(BaseResponseStatus.SUCCESS));
-    }
+//    @PutMapping(value = "/update/{idx}", consumes = {"multipart/form-data"})
+//    public ResponseEntity<BaseResponse<Void>> update(
+//            @PathVariable Long idx,
+//            @RequestPart("post") PostDto.PostRequest dto,
+//            @RequestPart(value = "images", required = false) List<MultipartFile> images) throws IOException {
+//        postService.update(idx, dto, images);
+//        return ResponseEntity.ok(new BaseResponse<>(BaseResponseStatus.SUCCESS));
+//    }
 
     @GetMapping("/list/user/{userId}")
     public ResponseEntity<BaseResponse<List<PostDto.UserPostResponse>>> getUserPosts(@PathVariable Long userId) {

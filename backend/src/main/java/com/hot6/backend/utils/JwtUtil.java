@@ -41,7 +41,7 @@ public class JwtUtil {
                     .nickname(claims.get("nickname", String.class))
                     .idx(claims.get("idx", Long.class))
                     .userType(UserType.valueOf(claims.get("userType", String.class)))
-                    .enabled(claims.get("enabled", Boolean.class))
+//                    .enabled(claims.get("enabled", Boolean.class))
                     .build();
 
         } catch (ExpiredJwtException e) {

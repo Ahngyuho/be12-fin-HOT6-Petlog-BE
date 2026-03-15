@@ -2,15 +2,10 @@ package com.hot6.backend.user;
 
 import com.hot6.backend.common.BaseResponse;
 import com.hot6.backend.common.BaseResponseStatus;
-import com.hot6.backend.common.exception.BaseException;
 import com.hot6.backend.pet.S3Service;
 import com.hot6.backend.user.model.User;
 import com.hot6.backend.user.model.UserDto;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -39,12 +34,12 @@ public class UserController {
         return ResponseEntity.ok(new BaseResponse(BaseResponseStatus.SUCCESS, userService.signup(userCreateRequest)));
     }
 
-    @Operation(summary = "이메일 인증 완료", description = "UUID를 통해 이메일 인증 처리")
-    @GetMapping("/verify-email")
-    public ResponseEntity<BaseResponse<String>> verifyEmail(@RequestParam String uuid, HttpServletResponse response) {
-        userService.verify(uuid, response);
-        return ResponseEntity.ok(new BaseResponse<>(BaseResponseStatus.SUCCESS));
-    }
+//    @Operation(summary = "이메일 인증 완료", description = "UUID를 통해 이메일 인증 처리")
+//    @GetMapping("/verify-email")
+//    public ResponseEntity<BaseResponse<String>> verifyEmail(@RequestParam String uuid, HttpServletResponse response) {
+//        userService.verify(uuid, response);
+//        return ResponseEntity.ok(new BaseResponse<>(BaseResponseStatus.SUCCESS));
+//    }
 
     @Operation(summary = "로그인 체크", description = "JWT 토큰으로 로그인 체크")
     @GetMapping("/auth/check")

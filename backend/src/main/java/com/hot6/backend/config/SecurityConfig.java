@@ -41,6 +41,9 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> auth
                 // 인증 없이 접근 가능한 엔드포인트들
                 .requestMatchers(
+                        "/swagger-ui/**",
+                        "/v3/api-docs/**",
+                        "/swagger-ui.html",
                         "/user/sign-up",
                         "/user/login",
                         "/user/verify-email",

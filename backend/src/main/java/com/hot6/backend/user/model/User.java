@@ -34,7 +34,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserType userType;
-    private boolean enabled;
+//    private boolean enabled;
 
     private String provider;
     private Long providerId;
@@ -84,13 +84,13 @@ public class User implements UserDetails {
         return nickname;
     }
 
-    public void userVerify() {
-        this.enabled = true;
-    }
+//    public void userVerify() {
+//        this.enabled = true;
+//    }
 
-    public boolean getEnabled() {
-        return this.enabled;
-    }
+//    public boolean getEnabled() {
+//        return this.enabled;
+//    }
 
 
     @OneToMany(mappedBy = "user")
