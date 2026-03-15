@@ -59,12 +59,12 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
                                             Authentication authResult) throws IOException, ServletException {
         User user = (User) authResult.getPrincipal();
 
-        if (!user.getEnabled()) {
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            new ObjectMapper().writeValue(response.getWriter(), new BaseResponse<>(BaseResponseStatus.EMAIL_VERIFY_FAIL));
-            return;
-        }
+//        if (!user.getEnabled()) {
+//            response.setContentType("application/json");
+//            response.setCharacterEncoding("UTF-8");
+//            new ObjectMapper().writeValue(response.getWriter(), new BaseResponse<>(BaseResponseStatus.EMAIL_VERIFY_FAIL));
+//            return;
+//        }
 
         String jwtToken = JwtUtil.generateToken(user);
         String refreshToken = JwtUtil.generateRefreshToken(user, REFRESH_EXP);
@@ -75,7 +75,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
                 .from("ATOKEN", jwtToken)
                 .path("/")
                 .httpOnly(true)
-                .secure(true)
+//                .secure(true)
                 .maxAge(Duration.ofHours(1L))
                 .build();
 

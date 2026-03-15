@@ -28,7 +28,7 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka'
 
     // smtp
-    implementation 'org.springframework.boot:spring-boot-starter-mail'
+//    implementation 'org.springframework.boot:spring-boot-starter-mail'
 
     // security
     implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -69,9 +69,10 @@ dependencies {
 
     //s3
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3:3.3.0'
-    
 
 
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
