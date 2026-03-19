@@ -17,9 +17,9 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
 
-@Profile("local")
+//@Profile("test")
 @RequiredArgsConstructor
-//@Component
+@Component
 @Slf4j
 public class InitJdbcDB {
 
@@ -35,7 +35,7 @@ public class InitJdbcDB {
 
     @PostConstruct
     public void init() {
-        init(500, 3, 20000, 20, 10, 4000);
+        init(50, 3, 100, 20, 20, 100);
     }
 
     @Transactional
@@ -86,15 +86,14 @@ public class InitJdbcDB {
                     "$2a$10$.QJ.leSKCQXX9Tn8pCipIOy8F.XhB8o0Gl1AFIRBN10L0LCFiJSB2",
                     petlogNameProvider.getRandomNickname() + i,
                     "https://example.com/img" + i + ".png",
-                    true,
                     false,
                     "USER"
             });
         }
 
         jdbcTemplate.batchUpdate(
-                "INSERT INTO `user` (email, password, nickname, user_profile_image, enabled, is_deleted, user_type) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO `user` (email, password, nickname, user_profile_image, is_deleted, user_type) " +
+                        "VALUES (?, ?, ?, ?, ?, ?)",
                 batch
         );
 
@@ -167,12 +166,13 @@ public class InitJdbcDB {
         for (int i = 0; i < count; i++) {
             batch.add(new Object[]{
                     chatRoomTitleProvider.getRandomTitle(),
-                    100
+                    100,
+                    0
             });
         }
 
         jdbcTemplate.batchUpdate(
-                "INSERT INTO chat_room (c_title, max_participants) VALUES (?, ?)",
+                "INSERT INTO chat_room (c_title, max_participants, current_participants) VALUES (?, ?, ?)",
                 batch
         );
 
